@@ -8,6 +8,12 @@
     </div>
   </div>
 </header>
-<main>
-
+<main class="container">
+  <h1>{{artist}}</h1>
+  <div class="row">
+    <div class="album col-3" *ngFor="let item of lstAlbum">
+      <h3>{{item.name}}</h3>
+      <img class="img-fluid" src="{{item.img}}" alt="img{{item.name}}">
+    </div>
+  </div>
 </main>
