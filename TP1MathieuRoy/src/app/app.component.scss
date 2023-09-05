@@ -16,4 +16,12 @@ main {
 
 .album {
   height: 300px;
+  position: relative;
+}
+
+.modal-content{
+  background-color: black;
+  position:absolute;
+  top:0px;
+  height: 300px;
 }

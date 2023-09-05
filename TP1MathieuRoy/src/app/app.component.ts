@@ -33,6 +33,18 @@ export class AppComponent implements OnInit {
     }
   }
 
+  chargerChanson(nomAlbum: String): void {
+  //todo changer valeur du display
+    let modal = document.getElementById("modal-" + nomAlbum)
 
+    // @ts-ignore
+    if (modal.style.display == "none"){
+      // @ts-ignore
+      modal.style.display = "block";
+    }else{
+      // @ts-ignore
+      modal.style.display = "none";
+    }
+  }
 
 }
