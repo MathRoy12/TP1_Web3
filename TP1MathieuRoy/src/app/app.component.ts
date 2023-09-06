@@ -18,9 +18,9 @@ export class AppComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<void> {
-    let rep1 = await lastValueFrom(this.http.get<any>('https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=Megadeth&api_key=9a8a3facebbccaf363bb9fd68fa37abf&format=json'))
-    this.artist = rep1.artist.name
-    let rep2 = await lastValueFrom(this.http.get<any>('https://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=Megadeth&api_key=9a8a3facebbccaf363bb9fd68fa37abf&format=json'))
+    this.artist = "car seat headrest"
+    let rep1 = await lastValueFrom(this.http.get<any>('https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=' + this.artist + '&api_key=9a8a3facebbccaf363bb9fd68fa37abf&format=json'))
+    let rep2 = await lastValueFrom(this.http.get<any>('https://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=' + this.artist + '&api_key=9a8a3facebbccaf363bb9fd68fa37abf&format=json'))
 
     for (let item of rep2.topalbums.album) {
       let titre: String = '';
