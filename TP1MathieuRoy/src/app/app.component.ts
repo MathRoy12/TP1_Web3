@@ -33,16 +33,27 @@ export class AppComponent implements OnInit {
     }
   }
 
-  chargerChanson(nomAlbum: String): void {
-  //todo changer valeur du display
-    let modal = document.getElementById("modal-" + nomAlbum)
-
+  async chargerChanson(nomAlbum: String): Promise<void> {
+    //todo changer valeur du display
     // @ts-ignore
-    if (modal.style.display == "none"){
-      // @ts-ignore
+    let modal: HTMLElement = document.getElementById("modal-" + nomAlbum)
+    // @ts-ignore
+    let zoneChanson: Element = modal.children.namedItem("content")
+    let Chansons: string = "<h5>" + nomAlbum + "<h5/>";
+
+    if (zoneChanson.innerHTML === "") {
+      let cpt: number = 1
+      let rep = await lastValueFrom(this.http.get<any>('https://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=9a8a3facebbccaf363bb9fd68fa37abf&artist=' + this.artist + '&format=json&album=' + nomAlbum))
+      for (let item of rep.album.tracks.track) {
+        Chansons += (cpt + ") " + item.name + "<br/>")
+        cpt++
+      }
+      zoneChanson.innerHTML = Chansons;
+    }
+
+    if (modal.style.display == "none") {
       modal.style.display = "block";
-    }else{
-      // @ts-ignore
+    } else {
       modal.style.display = "none";
     }
   }

@@ -12,11 +12,12 @@
   <h1>{{artist}}</h1>
   <div class="row">
     <div class="album col-3" *ngFor="let item of lstAlbum">
-        <h3>{{item.name}}</h3>
+        <h5>{{item.name}}</h5>
         <img class="img-fluid" src="{{item.img}}" alt="img{{item.name}}"><br/>
         <button (click)="chargerChanson(item.name)">Voir chansons</button>
         <div id="modal-{{item.name}}" class="modal-content" style="display: none">
           <!-- todo  -->
+          <div id="content"></div>
           <button (click)="chargerChanson(item.name)">Retour</button>
         </div>
     </div>
